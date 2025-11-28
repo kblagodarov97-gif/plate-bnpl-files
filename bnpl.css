@@ -1,0 +1,857 @@
+@font-face {
+    font-family: "Montserrat";
+    src: url("fonts/montserrat-700.woff2") format("woff2"),
+        url("fonts/montserrat-700.woff") format("woff");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Montserrat";
+    src: url("fonts/montserrat-600.woff2") format("woff2"),
+        url("fonts/montserrat-600.woff") format("woff");
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Montserrat";
+    src: url("/fonts/montserrat-400.woff2") format("woff2"),
+        url("/fonts/montserrat-400.woff") format("woff");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Roboto";
+    src: url("fonts/roboto-700.woff2") format("woff2"),
+        url("fonts/roboto-700.woff") format("woff");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Roboto";
+    src: url("fonts/roboto-500.woff2") format("woff2"),
+        url("fonts/roboto-500.woff") format("woff");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Roboto";
+    src: url("fonts/roboto-400.woff2") format("woff2"),
+        url("fonts/roboto-400.woff") format("woff");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+.bnpl-card,
+.bnpl-modal {
+    --bnpl-main-color: #6969ff;
+    --bnpl-main-color-light: #f0f0ff;
+    --bnpl-secondary-color: #f1f1f1;
+}
+
+.bnpl-card *,
+.bnpl-card *::before,
+.bnpl-card *::after {
+    box-sizing: inherit;
+}
+
+.bnpl-card {
+    border: 1px solid #f1f1f1;
+    box-shadow: 0px 14px 14px rgba(116, 116, 116, 0.09);
+    border-radius: 16px;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+}
+
+.bnpl-descr {
+    font: 400 16px/1.5 "Montserrat", sans-serif;
+    color: #333333;
+    padding: 0;
+    margin: 0;
+}
+
+.bnpl-descr--large {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.bnpl-descr b {
+    font-weight: 600;
+    color: inherit;
+}
+
+.bnpl-kopecks {
+    color: #808080;
+}
+
+.bnpl-desktop-only {
+    display: none;
+}
+
+.bnpl-logo {
+    display: block;
+}
+
+.bnpl-help-button {
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    cursor: pointer;
+    border: none;
+    position: absolute;
+    top: 6px;
+    right: 8px;
+    background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIj4KICA8Y2lyY2xlIGN4PSIxMi4wMDM5IiBjeT0iMTEuOTk5NSIgcj0iMTAiIHN0cm9rZT0iI0JGQkZCRiIgc3Ryb2tlLXdpZHRoPSIxLjUiLz4KICA8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTEyLjYzNzcgMTMuNTI4M1YxMy45MThIMTEuMDUxOEwxMS4wNDQ5IDEzLjQ1MzFDMTAuOTgzNCAxMi40Mjc3IDExLjM3OTkgMTEuODEyNSAxMi4zMjMyIDExLjI1ODhDMTMuMTcwOSAxMC43NDYxIDEzLjQ1OCAxMC4zODM4IDEzLjQ1OCA5LjcwNzAzQzEzLjQ1OCA4Ljk5NjA5IDEyLjg4MzggOC40ODM0IDEyLjAyMjUgOC40ODM0QzExLjE0MDYgOC40ODM0IDEwLjU3MzIgOS4wMTY2IDEwLjUxODYgOS44NTA1OUg4LjkxMjExQzguOTY2OCA4LjIzMDQ3IDEwLjA4MTEgNy4wNTQ2OSAxMi4xMTEzIDcuMDU0NjlDMTMuOTg0NCA3LjA1NDY5IDE1LjIzNTQgOC4xMzQ3NyAxNS4yMzU0IDkuNjQ1NTFDMTUuMjM1NCAxMC42OTE0IDE0LjcxNTggMTEuNDIyOSAxMy43ODYxIDExLjk3NjZDMTIuODkwNiAxMi41MDI5IDEyLjYzNzcgMTIuODUxNiAxMi42Mzc3IDEzLjUyODNaTTEzLjA1NjYgMTYuMDkyM0MxMy4wNTY2IDE2Ljc0ODUgMTIuNjE5MSAxNy4xNzkyIDExLjkyMTkgMTcuMTc5MkMxMS4yMzgzIDE3LjE3OTIgMTAuNzg3MSAxNi43NDg1IDEwLjc4NzEgMTYuMDkyM0MxMC43ODcxIDE1LjQyOTIgMTEuMjM4MyAxNC45OTg1IDExLjkyMTkgMTQuOTk4NUMxMi42MTkxIDE0Ljk5ODUgMTMuMDU2NiAxNS40MjkyIDEzLjA1NjYgMTYuMDkyM1oiIGZpbGw9IiNCRkJGQkYiLz4KPC9zdmc+)
+        no-repeat center / 24px;
+    transition: background-image .2s ease;
+}
+
+.bnpl-help-button:hover {
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIj4KPGNpcmNsZSBjeD0iMTIuMDAzOSIgY3k9IjExLjk5OTUiIHI9IjEwIiBzdHJva2U9IiM5OTk5OTkiIHN0cm9rZS13aWR0aD0iMS41Ii8+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMTIuNjM3NyAxMy41MjgzVjEzLjkxOEgxMS4wNTE4TDExLjA0NDkgMTMuNDUzMUMxMC45ODM0IDEyLjQyNzcgMTEuMzc5OSAxMS44MTI1IDEyLjMyMzIgMTEuMjU4OEMxMy4xNzA5IDEwLjc0NjEgMTMuNDU4IDEwLjM4MzggMTMuNDU4IDkuNzA3MDNDMTMuNDU4IDguOTk2MDkgMTIuODgzOCA4LjQ4MzQgMTIuMDIyNSA4LjQ4MzRDMTEuMTQwNiA4LjQ4MzQgMTAuNTczMiA5LjAxNjYgMTAuNTE4NiA5Ljg1MDU5SDguOTEyMTFDOC45NjY4IDguMjMwNDcgMTAuMDgxMSA3LjA1NDY5IDEyLjExMTMgNy4wNTQ2OUMxMy45ODQ0IDcuMDU0NjkgMTUuMjM1NCA4LjEzNDc3IDE1LjIzNTQgOS42NDU1MUMxNS4yMzU0IDEwLjY5MTQgMTQuNzE1OCAxMS40MjI5IDEzLjc4NjEgMTEuOTc2NkMxMi44OTA2IDEyLjUwMjkgMTIuNjM3NyAxMi44NTE2IDEyLjYzNzcgMTMuNTI4M1pNMTMuMDU2NiAxNi4wOTIzQzEzLjA1NjYgMTYuNzQ4NSAxMi42MTkxIDE3LjE3OTIgMTEuOTIxOSAxNy4xNzkyQzExLjIzODMgMTcuMTc5MiAxMC43ODcxIDE2Ljc0ODUgMTAuNzg3MSAxNi4wOTIzQzEwLjc4NzEgMTUuNDI5MiAxMS4yMzgzIDE0Ljk5ODUgMTEuOTIxOSAxNC45OTg1QzEyLjYxOTEgMTQuOTk4NSAxMy4wNTY2IDE1LjQyOTIgMTMuMDU2NiAxNi4wOTIzWiIgZmlsbD0iIzk5OTk5OSIvPgo8L3N2Zz4=);
+}
+
+.bnpl-help-button:active {
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMTIuMDAzOSIgY3k9IjExLjk5OTUiIHI9IjEwIiBzdHJva2U9IiNDOUM5QzkiIHN0cm9rZS13aWR0aD0iMS41Ii8+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMTIuNjM3NyAxMy41MjgzVjEzLjkxOEgxMS4wNTE4TDExLjA0NDkgMTMuNDUzMUMxMC45ODM0IDEyLjQyNzcgMTEuMzc5OSAxMS44MTI1IDEyLjMyMzIgMTEuMjU4OEMxMy4xNzA5IDEwLjc0NjEgMTMuNDU4IDEwLjM4MzggMTMuNDU4IDkuNzA3MDNDMTMuNDU4IDguOTk2MDkgMTIuODgzOCA4LjQ4MzQgMTIuMDIyNSA4LjQ4MzRDMTEuMTQwNiA4LjQ4MzQgMTAuNTczMiA5LjAxNjYgMTAuNTE4NiA5Ljg1MDU5SDguOTEyMTFDOC45NjY4IDguMjMwNDcgMTAuMDgxMSA3LjA1NDY5IDEyLjExMTMgNy4wNTQ2OUMxMy45ODQ0IDcuMDU0NjkgMTUuMjM1NCA4LjEzNDc3IDE1LjIzNTQgOS42NDU1MUMxNS4yMzU0IDEwLjY5MTQgMTQuNzE1OCAxMS40MjI5IDEzLjc4NjEgMTEuOTc2NkMxMi44OTA2IDEyLjUwMjkgMTIuNjM3NyAxMi44NTE2IDEyLjYzNzcgMTMuNTI4M1pNMTMuMDU2NiAxNi4wOTIzQzEzLjA1NjYgMTYuNzQ4NSAxMi42MTkxIDE3LjE3OTIgMTEuOTIxOSAxNy4xNzkyQzExLjIzODMgMTcuMTc5MiAxMC43ODcxIDE2Ljc0ODUgMTAuNzg3MSAxNi4wOTIzQzEwLjc4NzEgMTUuNDI5MiAxMS4yMzgzIDE0Ljk5ODUgMTEuOTIxOSAxNC45OTg1QzEyLjYxOTEgMTQuOTk4NSAxMy4wNTY2IDE1LjQyOTIgMTMuMDU2NiAxNi4wOTIzWiIgZmlsbD0iI0M5QzlDOSIvPgo8L3N2Zz4K);
+    transition: background-image .2s ease;
+}
+
+@media (min-width: 620px) {
+    .bnpl-mobile-only {
+        display: none;
+    }
+
+    .bnpl-desktop-only {
+        display: block;
+    }
+}
+
+/* 
+* bnpl-card--small-1
+*/
+.bnpl-card--small-1 {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 11px 51px 11px 15px;
+}
+
+.bnpl-card--small-1 .bnpl-logo {
+    height: 28px;
+    margin: 0;
+    padding: 0;
+}
+
+.bnpl-card--small-1 .bnpl-help-button {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.bnpl-card--small-1 .bnpl-descr {
+    margin-left: 12px;
+    white-space: nowrap;
+}
+
+/* 
+* bnpl-card--small-3
+* bnpl-card--small-4
+*/
+.bnpl-card--small-3,
+.bnpl-card--small-4 {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 12px 52px 12px 16px;
+}
+
+.bnpl-card--small-3 .bnpl-descr,
+.bnpl-card--small-4 .bnpl-descr  {
+    margin-left: 16px;
+    white-space: nowrap;
+}
+
+/* 
+* bnpl-card--small-5,
+* bnpl-card--small-2,
+*/
+.bnpl-card--small-5,
+.bnpl-card--small-2 {
+    padding: 11px 15px 15px 15px;
+}
+
+.bnpl-card--small-5 .bnpl-logo,
+.bnpl-card--small-2 .bnpl-logo {
+    height: 24px;
+    width: 84.83px;
+    margin: 0 0 12px 0;
+    padding: 0;
+}
+
+
+/* 
+* bnpl-card--schedule
+*/
+.bnpl-card--schedule {
+    padding: 15px;
+}
+
+.bnpl-card--schedule .bnpl-logo {
+    height: 24px;
+    width: 90px;
+    margin: 0 0 12px 0;
+    padding: 0;
+}
+
+.bnpl-card--schedule .bnpl-help-button {
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    cursor: pointer;
+    border: none;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+}
+
+.bnpl-card--schedule .bnpl-descr {
+    font: 400 14px/1.25 "Montserrat", sans-serif;
+    color: #333333;
+    padding: 0;
+    margin: 0 0 16px;
+}
+
+.bnpl-card--schedule .bnpl-schedule-calc {
+    display: flex;
+}
+
+.bnpl-card--schedule .bnpl-schedule-calc__today {
+    max-width: 130px;
+    margin-right: 10px;
+}
+
+.bnpl-card--schedule .bnpl-schedule-calc__today::before,
+.bnpl-card--schedule:not(.bnpl-card--schedule-combined) .bnpl-schedule-calc__part::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 6px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+}
+
+.bnpl-card--schedule .bnpl-schedule-calc__today::before {
+    background: var(--bnpl-main-color);
+}
+
+.bnpl-card--schedule .bnpl-schedule-calc__part::before {
+    background: var(--bnpl-secondary-color);
+}
+
+.bnpl-card--schedule .bnpl-schedule-calc__today,
+.bnpl-card--schedule .bnpl-schedule-calc__part {
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+.bnpl-card--schedule .bnpl-schedule-calc__today:not(:last-child),
+.bnpl-card--schedule .bnpl-schedule-calc__part:not(:last-child) {
+    margin-right: 12px;
+}
+
+.bnpl-card--schedule .bnpl-schedule-calc__descr {
+    margin: 0 0 4px;
+    padding: 0;
+    font: 400 11px/16px "Roboto", sans-serif;
+    color: #808080;
+}
+
+.bnpl-card--schedule .bnpl-schedule-calc__sum {
+    font: 600 14px/16px "Montserrat", sans-serif;
+    color: #333333;
+    white-space: nowrap;
+}
+
+.bnpl-card--schedule .bnpl-schedule-calc__sum span {
+    color: #808080;
+}
+
+
+.bnpl-card--schedule .bnpl-schedule-calc__lines {
+    width: 100%;
+    display: flex;
+}
+
+.bnpl-card--schedule .bnpl-schedule-calc__lines div:not(:last-child) {
+    margin-right: 12px;
+}
+
+.bnpl-card--schedule .bnpl-schedule-calc__lines--many div:not(:last-child) {
+    margin-right: 4px;
+}
+
+.bnpl-card--schedule .bnpl-schedule-calc__lines div {
+    content: "";
+    display: block;
+    height: 6px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+    background: var(--bnpl-secondary-color);
+    flex-grow: 1;
+}
+
+/* 
+* bnpl-modal
+*/
+.bnpl-modal {
+    position: fixed !important;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: rgba(63, 63, 63, 0.85);
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    pointer-events: none;
+    opacity: 0;
+
+    transition: opacity 0.1s cubic-bezier(0.465, 0.183, 0.153, 0.946);
+}
+
+.bnpl-modal--open {
+    pointer-events: auto;
+    opacity: 1;
+    transition: opacity 0.3s cubic-bezier(0.465, 0.183, 0.153, 0.946);
+}
+
+.bnpl-modal-wrapper {
+    height: 100%;
+    margin: 0;
+    background: #ffffff;
+    overflow-y: auto;
+    scrollbar-width: 4px;
+    scrollbar-color: transparent #fff;
+}
+
+.bnpl-modal-wrapper::-webkit-scrollbar {
+    width: 0;
+    padding-right: 0;
+}
+
+.bnpl-modal-wrapper::-webkit-scrollbar {
+    width: 0;
+    padding-right: 0;
+}
+
+.bnpl-modal-wrapper::-webkit-scrollbar-thumb {
+    background: transparent;
+    opacity: 0.5;
+    border-radius: 4px;
+}
+
+.bnpl-modal .bnpl-modal__header {
+    position: absolute;
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    padding: 0 16px;
+    height: 64px;
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.92) 38.82%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bnpl-modal .bnpl-modal__close {
+    display: block;
+    width: 32px;
+    height: 32px;
+    position: relative;
+    padding: 0;
+    background-color: transparent;
+    border: 1px solid #f1f1f1;
+    border-radius: 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-indent: 300px;
+    cursor: pointer;
+    
+    transition: background-color 0.3s ease;
+}
+
+.bnpl-modal .bnpl-modal__close::before {
+    content: '';
+    display: block;
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: transparent url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2220%22%20height%3D%2220%22%20fill%3D%22none%22%20viewBox%3D%220%200%2020%2020%22%3E%3Cg%20fill%3D%22currentColor%22%3E%3Cpath%20d%3D%22m15.146%204.399%201.132%201.131L5.53%2016.278l-1.132-1.131z%22%2F%3E%3Cpath%20d%3D%22M5.53%204.4%204.398%205.53%2015.146%2016.28l1.132-1.132z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E%0A)
+        no-repeat center / cover;
+    pointer-events: none;
+    color: #4a4a4a;
+}
+
+.bnpl-modal .bnpl-modal__close:hover {
+    background-color: #f1f1f1;
+}
+
+.bnpl-modal .bnpl-modal__body {
+    display: flex;
+    flex-direction: column;
+    padding: 104px 16px 0;
+}
+
+@supports (position: sticky) {
+    .bnpl-modal .bnpl-modal__body {
+        padding-top: 16px;
+    }
+}
+
+.bnpl-modal .bnpl-banks-label {
+    padding: 8px 16px;
+    margin: 0 0 24px;
+    display: flex;
+    align-items: center;
+    font: normal 500 14px/18px "Roboto", sans-serif;
+    color: #000000;
+    background: #f4f7ff;
+    border-radius: 30px;
+    align-self: flex-start;
+}
+
+.bnpl-modal .bnpl-banks-label__logotypes {
+    display: flex;
+    white-space: nowrap;
+    font: 400 12px/24px "Roboto", sans-serif;
+    color: #808080;
+    margin-left: 20px;
+}
+
+.bnpl-modal .bnpl-banks-label__logo {
+    display: block;
+    width: 24px;
+    height: 24px;
+    position: relative;
+    margin-left: -8px;
+}
+
+.bnpl-modal .bnpl-modal__title {
+    font: 700 28px/34px "Montserrat", sans-serif;
+    padding: 0;
+    margin: 0 0 24px;
+}
+
+.bnpl-modal .bnpl-modal-features {
+    padding: 0;
+    margin: 0 0 24px;
+    list-style: none;
+}
+
+.bnpl-modal .bnpl-modal-features__item {
+    display: flex;
+    align-items: center;
+    padding: 20px 0;
+    margin: 0;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.bnpl-modal .bnpl-modal-features__item p {
+    padding: 0;
+    margin: 0;
+    font: 400 16px/24px "Roboto", sans-serif;
+}
+
+.bnpl-modal .bnpl-modal-features__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 8.72727px;
+    margin-right: 24px;
+    background: var(--bnpl-main-color-light);
+    color: var(--bnpl-main-color);
+}
+
+.bnpl-modal .bnpl-modal-spoiler {
+    border: 1px solid #f1f1f1;
+    border-radius: 24px;
+    margin-bottom: 32px;
+}
+
+.bnpl-modal .bnpl-modal-spoiler__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px;
+    position: relative;
+
+    color: #333333;
+    cursor: pointer;
+}
+
+.bnpl-modal .bnpl-modal-spoiler__header-text {
+    font: 600 17px/25px "Montserrat", sans-serif;
+    padding-right: 24px;
+    transition: padding 0.3s ease;
+}
+
+.bnpl-modal .bnpl-modal-spoiler__header::after {
+    content: "";
+    display: block;
+    width: 32px;
+    height: 32px;
+    border: 0.8px solid #f1f1f1;
+    border-radius: 8px;
+    color: #000000;
+    background: url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2220%22%20height%3D%2220%22%20fill%3D%22none%22%20viewBox%3D%220%200%2020%2020%22%3E%3Cpath%20fill%3D%22currentColor%22%20d%3D%22M14%207.736a.8.8%200%200%200-1.128%200L10%2010.568%207.168%207.736A.8.8%200%201%200%206.04%208.872l3.392%203.392a.8.8%200%200%200%201.136%200L14%208.872a.801.801%200%200%200%200-1.136Z%22%2F%3E%3C%2Fsvg%3E)
+        no-repeat center / 20px;
+    transition: all 0.3s ease;
+}
+
+.bnpl-modal .bnpl-modal-spoiler--open .bnpl-modal-spoiler__header::after {
+    background-color: #f1f1f1;
+    transform: rotateX(180deg);
+}
+
+.bnpl-modal .bnpl-modal-spoiler__body {
+    padding: 0 23px 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 0.3s ease, max-height 0.3s ease;
+    opacity: 0;
+}
+
+.bnpl-modal .bnpl-modal-spoiler--open .bnpl-modal-spoiler__body {
+    opacity: 1;
+}
+
+.bnpl-modal .bnpl-modal__questions {
+    padding: 0 0 23px;
+    margin: 0;
+}
+
+.bnpl-modal .bnpl-modal__question {
+    padding: 0;
+    margin: 0 0 12px;
+    font: 600 16px/24px "Montserrat", sans-serif;
+    color: #333333;
+}
+
+.bnpl-modal .bnpl-modal__answer {
+    margin: 0 0 25px;
+    padding: 0;
+    font: 400 16px/24px "Roboto", sans-serif;
+    color: #333333;
+}
+
+.bnpl-modal .bnpl-modal__answer:last-child {
+    margin: 0;
+}
+
+.bnpl-modal .bnpl-modal-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 0;
+    color: #333333;
+    border-top: 1px solid #f1f1f1;
+}
+
+.bnpl-modal .bnpl-modal-footer p {
+    font: 400 14px/16px "Roboto", sans-serif;
+    padding: 0;
+    margin: 0 0 4px;
+}
+
+.bnpl-modal .bnpl-modal-footer__phone {
+    margin: 0 0 4px;
+    font: 700 18px/24px "Montserrat", sans-serif;
+    color: #333333;
+    text-decoration: none;
+}
+
+.bnpl-modal .bnpl-modal-footer__site {
+    font: 400 18px/24px "Roboto", sans-serif;
+    color: #333333;
+    text-decoration: none;
+}
+
+.bnpl-modal .bnpl-modal-footer__phone:hover,
+.bnpl-modal .bnpl-modal-footer__site:hover {
+    text-decoration: none;
+}
+
+/*bnpl-schedule-calc*/
+
+.bnpl-modal .bnpl-schedule-calc {
+    display: flex;
+    flex-direction: column;
+    padding: 24px 16px;
+    margin: 0 0 24px;
+    border: 1px solid #f1f1f1;
+    box-shadow: 0px 14px 14px rgba(116, 116, 116, 0.09);
+    border-radius: 16px;
+}
+
+.bnpl-modal .bnpl-schedule-calc__title {
+    margin: 0 0 24px;
+    font: 600 18px/24px "Montserrat", sans-serif;
+    color: #2e2e2e;
+}
+
+.bnpl-modal .bnpl-schedule-calc__payments {
+    display: flex;
+}
+
+.bnpl-modal .bnpl-schedule-calc__others {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.bnpl-modal .bnpl-schedule-calc__today {
+    max-width: 28.571%;
+    margin-right: 10px;
+}
+
+.bnpl-modal .bnpl-schedule-calc__part {
+    display: none;
+}
+
+.bnpl-modal .bnpl-schedule-calc__today,
+.bnpl-modal .bnpl-schedule-calc__part {
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+.bnpl-modal .bnpl-schedule-calc__lines {
+    width: 100%;
+    display: flex;
+}
+
+.bnpl-modal .bnpl-schedule-calc__today,
+.bnpl-modal .bnpl-schedule-calc__part:not(:last-child),
+.bnpl-modal .bnpl-schedule-calc__lines div:not(:last-child) {
+    margin-right: 12px;
+}
+
+.bnpl-modal .bnpl-schedule-calc__lines--many div:not(:last-child) {
+    margin-right: 8px;
+}
+
+.bnpl-modal .bnpl-schedule-calc__today::before,
+.bnpl-modal .bnpl-schedule-calc__part::before,
+.bnpl-modal .bnpl-schedule-calc__lines div {
+    content: "";
+    display: block;
+    height: 6px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+    background: var(--bnpl-secondary-color);
+}
+
+.bnpl-modal .bnpl-schedule-calc__today::before,
+.bnpl-modal .bnpl-schedule-calc__part::before {
+    width: 100%;
+}
+
+.bnpl-modal .bnpl-schedule-calc__today::before {
+    background: var(--bnpl-main-color);
+}
+
+.bnpl-modal .bnpl-schedule-calc__lines div {
+    flex-grow: 1;
+}
+
+.bnpl-modal .bnpl-schedule-calc__part--combined::before {
+    display: none;
+}
+
+.bnpl-modal .bnpl-schedule-calc__descr {
+    margin: 0 0 4px;
+    padding: 0;
+    font: 400 12px/16px "Roboto", sans-serif;
+    color: #808080;
+}
+
+.bnpl-modal .bnpl-schedule-calc__sum {
+    font: 600 14px/20px "Montserrat", sans-serif;
+    color: #333333;
+    white-space: nowrap;
+}
+
+@media (min-width: 620px) {
+    .bnpl-modal-wrapper {
+        border-radius: 32px;
+        height: calc(100% - 100px);
+        width: 594px;
+        margin: auto;
+        transform: scale(0.9);
+        transition: transform 0.1s cubic-bezier(0.465, 0.183, 0.153, 0.946);
+    }
+
+    .bnpl-modal--open .bnpl-modal-wrapper {
+        transition: transform 0.3s cubic-bezier(0.465, 0.183, 0.153, 0.946);
+    }
+
+    .bnpl-modal .bnpl-modal__close {
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        background-position: center;
+        background-size: 19px 19px;
+    }
+
+    .bnpl-modal .bnpl-modal__close::before {
+        width: 19px;
+        height: 19px;
+    }
+
+    .bnpl-modal .bnpl-modal__header {
+        padding-left: 32px;
+        padding-right: 32px;
+        height: 88px;
+    }
+
+    .bnpl-modal .bnpl-modal__body {
+        padding-top: 20px;
+        padding-left: 32px;
+        padding-right: 32px;
+    }
+
+    .bnpl-modal .bnpl-modal__title {
+        line-height: 38px;
+    }
+
+    .bnpl-modal .bnpl-banks-label__logotypes {
+        margin-left: 32px;
+    }
+
+    .bnpl-modal .bnpl-schedule-calc {
+        padding: 32px;
+        margin-bottom: 40px;
+    }
+
+    .bnpl-modal .bnpl-schedule-calc__title {
+        font-size: 18px;
+        line-height: 24px;
+        margin-bottom: 32px;
+    }
+
+    .bnpl-modal .bnpl-schedule-calc__part {
+        display: block;
+    }
+
+    .bnpl-modal .bnpl-schedule-calc__others {
+        display: none;
+    }
+
+    .bnpl-modal .bnpl-schedule-calc__today,
+    .bnpl-modal .bnpl-schedule-calc__part:not(:last-child) {
+        margin-right: 16px;
+    }
+
+    .bnpl-modal .bnpl-schedule-calc__today::before,
+    .bnpl-modal .bnpl-schedule-calc__part::before {
+        height: 6px;
+        margin-bottom: 16px;
+    }
+
+    .bnpl-modal .bnpl-schedule-calc__descr {
+        margin-bottom: 8px;
+    }
+
+    .bnpl-modal .bnpl-schedule-calc__sum {
+        font-size: 24px;
+        line-height: 1;
+    }
+
+    .bnpl-modal .bnpl-modal-features {
+        margin: 0 0 40px;
+    }
+
+    .bnpl-modal .bnpl-modal-features__item {
+        padding: 24px 0;
+        min-height: 44px;
+    }
+
+    .bnpl-modal .bnpl-modal-features__icon {
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+    }
+
+    .bnpl-modal .bnpl-modal-features__icon svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    .bnpl-modal .bnpl-modal-features__item p {
+        font-size: 18px;
+        line-height: 26px;
+    }
+
+    .bnpl-modal .bnpl-modal-spoiler {
+        margin-bottom: 72px;
+    }
+
+    .bnpl-modal .bnpl-modal-spoiler__header-text {
+        font-size: 18px;
+        line-height: 26px;
+    }
+
+    .bnpl-modal .bnpl-modal-spoiler__header::after {
+        width: 40px;
+        height: 40px;
+        background-size: 24px;
+    }
+
+    .bnpl-modal .bnpl-modal-spoiler--open .bnpl-modal-spoiler__header {
+        padding-bottom: 32px;
+    }
+
+    .bnpl-modal .bnpl-modal-footer {
+        padding: 32px 0;
+    }
+
+    .bnpl-modal .bnpl-modal-footer p {
+        margin-bottom: 8px;
+        font-size: 18px;
+        line-height: 26px;
+    }
+
+    .bnpl-modal .bnpl-modal-footer__phone {
+        margin-bottom: 8px;
+        font-size: 28px;
+        line-height: 38px;
+    }
+
+    .bnpl-modal .bnpl-modal-footer__site {
+        font-size: 24px;
+        line-height: 28px;
+    }
+}
